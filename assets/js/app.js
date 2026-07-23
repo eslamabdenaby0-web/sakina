@@ -100,3 +100,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener("click", function() {
+            navLinks.classList.toggle("show");
+            
+            // تغيير الأيقونة بين الشرطات وعلامة الإغلاق (X)
+            const icon = menuToggle.querySelector("i");
+            if (navLinks.classList.contains("show")) {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+            } else {
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+            }
+        });
+
+        // إغلاق القائمة تلقائياً عند النقر على أي رابط من روابط الموقع
+        navLinks.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.classList.remove("show");
+                const icon = menuToggle.querySelector("i");
+                if (icon) {
+                    icon.classList.remove("fa-xmark");
+                    icon.classList.add("fa-bars");
+                }
+            });
+        });
+    }
+});

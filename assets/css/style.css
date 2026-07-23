@@ -79,24 +79,22 @@ body {
 
 .nav-links {
     display: flex;
-    gap: 18px;
+    gap: 10px; /* تقليل المسافة بين الروابط لتسع الشاشة كلها */
     list-style: none;
     align-items: center;
-    
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--dark-navy);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.88rem; /* تصغير الخط قليلاً ليناسب كثرة العناصر */
     transition: var(--transition-smooth);
     display: flex;
     align-items: center;
     gap: 4px;
-    padding: 6px 0px;
+    padding: 6px 8px; /* إضافة مسافة داخلية خفيفة لتوضيح التحديد */
     border-radius: 8px;
-
 }
 
 .nav-links a:hover, .nav-links a.active {
@@ -122,9 +120,10 @@ body {
 }
 
 /* الحاوية الرئيسية */
+/* زيادة الـ margin-top للحاوية الرئيسية لكي تبدأ تحت الـ Navbar تماماً ولا تختفي تحتها */
 .container {
     max-width: 1200px;
-    margin: 110px auto 40px;
+    margin: 130px auto 40px; 
     padding: 0 20px;
 }
 
@@ -135,6 +134,12 @@ body {
     margin-bottom: 30px;
     box-shadow: var(--shadow-soft);
     border-top: 5px solid var(--islamic-gold);
+}
+/* إظهار قائمة الموبايل أو السماح بالتمرير الأفقي للروابط في الشاشات الصغيرة */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none; /* أو يمكنك تحويلها لقائمة جانبية متحركة إذا كان لديك زر لها */
+    }
 }
 
 /* قسم الهيرو */
@@ -546,5 +551,66 @@ body {
 @media (max-width: 768px) {
     .nav-links {
         display: none; /* يمكن تحويلها لـ Mobile Menu لاحقاً */
+    }
+}
+/* إخفاء زر القائمة افتراضياً في الشاشات الكبيرة */
+.menu-btn {
+    display: none;
+    background: var(--soft-beige);
+    border: 1px solid var(--glass-border);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--emerald-green);
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+}
+
+.menu-btn:hover {
+    background: var(--emerald-green);
+    color: white;
+}
+
+/* تنسيق الشاشات الصغيرة (الموبايل) */
+@media (max-width: 992px) {
+    .menu-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-container {
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    /* إخفاء الروابط افتراضياً حتى يتم النقر على زر القائمة */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        gap: 10px;
+        align-items: flex-start;
+        border-top: 1px solid var(--glass-border);
+    }
+
+    /* الكلاس الذي يقوم بإظهار القائمة عبر الجافاسكريبت */
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+        padding: 8px 12px;
     }
 }
