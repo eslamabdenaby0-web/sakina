@@ -1,0 +1,13 @@
+{
+  "background_color": "#145a0b",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "sakina",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "SKN",
+  "start_url": "/",
+  "theme_color": "#eae8e8",
+  "id": "com.sakina.app",
+  "description": "منصة إسلامية شاملة لتلاوة القرآن، الأذكار، مواقيت الصلاة والسبحة الإلكترونية."
+}
