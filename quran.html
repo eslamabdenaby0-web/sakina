@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المصحف الشريف كاملاً | منصة سكينة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/dark-theme.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+                <span class="brand-name">سكينة</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                    <li><a href="tafsir.html" class="active"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                    <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                    <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                    <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                    <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                    <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                    <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                    <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي للمصحف -->
+    <main class="container">
+        
+        <!-- قسم الهيرو وبحث السور -->
+        <section class="card quran-header-card" style="text-align: center; background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green)); color: white;">
+            <h1 style="font-family: 'Amiri', serif; font-size: 2.5rem; margin-bottom: 10px; color: var(--gold-light);">المصحف الشريف كاملاً</h1>
+            <p style="font-size: 1.1rem; opacity: 0.9;">تصفح سور القرآن الكريم كاملة بجميع الآيات مع الاستماع والتفسير الميسر.</p>
+            
+            <div class="search-bar-container" style="margin-top: 25px;">
+                <input type="text" id="surah-search" placeholder="ابحث عن اسم السورة..." onkeyup="filterSurahs()">
+            </div>
+        </section>
+
+        <!-- قسم عرض فهرس السور (يظهر في البداية) -->
+        <section id="surah-index-section" class="card">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-list"></i> فهرس سور القرآن الكريم (114 سورة)</h2>
+            </div>
+            <div id="surahs-grid" class="surahs-grid">
+                <!-- يتم جلب السور كاملة برمجياً عبر الـ API -->
+            </div>
+        </section>
+
+        <!-- قسم قراءة السورة وعرض الآيات (يظهر عند اختيار سورة) -->
+        <section id="surah-reader-section" class="card" style="display: none;">
+            <div class="reader-nav-bar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; border-bottom: 2px solid var(--soft-beige); padding-bottom: 15px;">
+                <button onclick="backToSurahList()" class="btn-primary" style="padding: 8px 20px; font-size: 0.9rem;"><i class="fa-solid fa-arrow-right"></i> العودة لفهرس السور</button>
+                <h2 id="active-surah-title" style="font-family: 'Amiri', serif; font-size: 2rem; color: var(--emerald-green);">سورة الفاتحة</h2>
+                <div class="audio-player-box">
+                    <audio id="quran-audio" controls style="height: 35px; width: 220px;"></audio>
+                </div>
+            </div>
+            <div class="bismillah-banner" style="text-align: center; font-family: 'Amiri', serif; font-size: 1.8rem; color: var(--islamic-gold); margin-bottom: 25px;">
+                بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+            </div>
+            <div id="ayahs-container" class="ayahs-container" style="font-family: 'Amiri', serif; font-size: 1.8rem; line-height: 2.5; text-align: justify; color: var(--text-main);">
+                <!-- يتم جلب جميع آيات السورة هنا ديناميكياً -->
+            </div>
+        </section>
+
+    </main>
+
+  
+      <!-- الفوتر -->
+      <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="prophets.html">قصص الأنبياء</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+            <!-- قسم وسائل التواصل الاجتماعي -->
+            <div class="footer-social">
+                <h4>تواصل معي</h4>
+                <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+        </div>
+    </footer>  <!-- ربط السكربتات -->
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/quran.js"></script>
+</body>
+</html>

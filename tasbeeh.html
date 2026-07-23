@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السبحة الإلكترونية | منصة سكينة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body { font-family: 'Cairo', sans-serif; }
+        .amiri-font { font-family: 'Amiri', serif; }
+    </style>
+      <link rel="stylesheet" href="assets/css/dark-theme.css">
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+                <span class="brand-name">سكينة</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                    <li><a href="tafsir.html" class="active"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                    <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                    <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                    <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                    <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                    <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                    <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                    <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+    <!-- المحتوى الرئيسي -->
+    <main class="container max-w-4xl mx-auto px-4 py-10 flex-grow flex flex-col items-center">
+        
+        <!-- عنوان الصفحة -->
+        <section class="w-full bg-gradient-to-br from-emerald-900 to-emerald-700 text-white text-center p-8 rounded-2xl shadow-lg mb-8">
+            <h1 class="amiri-font text-3xl md:text-4xl text-amber-300 mb-2">السبحة الإلكترونية المتقدمة</h1>
+            <p class="text-emerald-100 text-sm md:text-base">اختر الذكر المناسب واجعل لسانك رطباً بذكر الله عز وجل.</p>
+        </section>
+
+        <!-- قائمة اختيار الذكر -->
+        <div class="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 mb-8">
+            <button onclick="setCategory(0)" id="cat-btn-0" class="category-btn p-3 rounded-xl font-bold text-sm transition bg-emerald-700 text-white shadow-md">تسبيح</button>
+            <button onclick="setCategory(1)" id="cat-btn-1" class="category-btn p-3 rounded-xl font-bold text-sm transition bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">استغفار</button>
+            <button onclick="setCategory(2)" id="cat-btn-2" class="category-btn p-3 rounded-xl font-bold text-sm transition bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">تحميد</button>
+            <button onclick="setCategory(3)" id="cat-btn-3" class="category-btn p-3 rounded-xl font-bold text-sm transition bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">تكبير</button>
+            <button onclick="setCategory(4)" id="cat-btn-4" class="category-btn col-span-2 sm:col-span-1 p-3 rounded-xl font-bold text-sm transition bg-white text-slate-700 border border-slate-200 hover:bg-slate-100">حوقلة وصلاة</button>
+        </div>
+
+        <!-- بطاقة العداد الرئيسية -->
+        <div class="w-full bg-white border border-slate-100 shadow-xl rounded-3xl p-8 md:p-12 text-center flex flex-col items-center relative overflow-hidden">
+            
+            <!-- مؤشر الدورة الحالية -->
+            <div class="absolute top-6 left-6 bg-emerald-50 text-emerald-800 px-4 py-1.5 rounded-full text-xs font-bold border border-emerald-100">
+                الدورة: <span id="round-count">0</span>
+            </div>
+
+            <!-- نص الذكر الحالي -->
+            <div id="tasbeeh-name" class="amiri-font text-2xl md:text-4xl text-emerald-800 font-bold mb-6 min-h-[60px] flex items-center justify-center">
+                سُبْحَانَ اللَّهِ
+            </div>
+
+            <!-- رقم العداد الكبير -->
+            <div id="tasbeeh-count" class="text-7xl md:text-9xl font-black text-slate-800 mb-10 tracking-wider">
+                0
+            </div>
+
+            <!-- أزرار التفاعل (الضغط وإعادة الصفر) -->
+            <div class="flex flex-wrap justify-center items-center gap-4 w-full max-w-md">
+                <button onclick="incrementTasbeeh()" class="flex-grow py-5 px-8 text-2xl bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-bold rounded-2xl shadow-lg transition duration-150 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-fingerprint"></i> اضغط للتسبيح
+                </button>
+                <button onclick="resetTasbeeh()" class="py-5 px-6 bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold rounded-2xl transition flex items-center justify-center gap-2" title="إعادة العداد">
+                    <i class="fa-solid fa-rotate-right text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // مصفوفة الأذكار المصنفة
+        const categories = [
+            { name: "تسبيح", phrases: ["سُبْحَانَ اللَّهِ", "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ", "سُبْحَانَ اللَّهِ الْعَظِيمِ وَبِحَمْدِهِ"] },
+            { name: "استغفار", phrases: ["أَسْتَغْفِرُ اللَّهَ", "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ وَأَتُوبُ إِلَيْهِ"] },
+            { name: "تحميد", phrases: ["الْحَمْدُ لِلَّهِ", "الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ", "الْحَمْدُ لِلَّهِ حمداً كثيراً طيباً مباركاً فيه"] },
+            { name: "تكبير", phrases: ["اللَّهُ أَكْبَرُ", "اللَّهُ أَكْبَرُ كَبِيراً وَالْحَمْدُ لِلَّهِ كَثِيراً"] },
+            { name: "حوقلة وصلاة", phrases: ["لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ", "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ", "حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ"] }
+        ];
+
+        let currentCategoryIndex = 0;
+        let currentPhraseIndex = 0;
+        let count = parseInt(localStorage.getItem('tasbeeh_count')) || 0;
+        let rounds = parseInt(localStorage.getItem('tasbeeh_rounds')) || 0;
+
+        function updateUI() {
+            document.getElementById('tasbeeh-count').textContent = count;
+            document.getElementById('round-count').textContent = rounds;
+            document.getElementById('tasbeeh-name').textContent = categories[currentCategoryIndex].phrases[currentPhraseIndex];
+            
+            // تحديث تصميم الأزرار العلوية
+            document.querySelectorAll('.category-btn').forEach((btn, idx) => {
+                if(idx === currentCategoryIndex) {
+                    btn.className = "category-btn p-3 rounded-xl font-bold text-sm transition bg-emerald-700 text-white shadow-md";
+                } else {
+                    btn.className = "category-btn p-3 rounded-xl font-bold text-sm transition bg-white text-slate-700 border border-slate-200 hover:bg-slate-100";
+                }
+            });
+        }
+
+        function setCategory(index) {
+            currentCategoryIndex = index;
+            currentPhraseIndex = 0;
+            count = 0;
+            saveData();
+            updateUI();
+        }
+
+        function incrementTasbeeh() {
+            count++;
+            
+            // اهتزاز خفيف للأجهزة الداعمة عند الضغط
+            if (navigator.vibrate) {
+                navigator.vibrate(40);
+            }
+
+            // عند الوصول إلى 33 نقلة، يتم الانتقال للذكر التالي ضمن نفس التصنيف أو زيادة دورة
+            if (count >= 33) {
+                count = 0;
+                rounds++;
+                const activePhrases = categories[currentCategoryIndex].phrases;
+                currentPhraseIndex = (currentPhraseIndex + 1) % activePhrases.length;
+            }
+
+            saveData();
+            updateUI();
+        }
+
+        function resetTasbeeh() {
+            count = 0;
+            rounds = 0;
+            currentPhraseIndex = 0;
+            saveData();
+            updateUI();
+        }
+
+        function saveData() {
+            localStorage.setItem('tasbeeh_count', count);
+            localStorage.setItem('tasbeeh_rounds', rounds);
+        }
+
+        // تشغيل واجهة المستخدم عند تحميل الصفحة
+        window.onload = function() {
+            updateUI();
+        };
+    </script>
+      <!-- الفوتر -->
+      <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="prophets.html">قصص الأنبياء</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+            <!-- قسم وسائل التواصل الاجتماعي -->
+            <div class="footer-social">
+                <h4>تواصل معي</h4>
+                <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+        </div>
+    </footer>
+     <script src="assets/js/app.js"></script>
+</body>
+</html>

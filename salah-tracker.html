@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سجل الطاعات وحساب الحسنات المتكامل | منصة سكينة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/dark-theme.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+                <span class="brand-name">سكينة</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                    <li><a href="tafsir.html" class="active"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                    <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                    <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                    <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                    <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                    <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                    <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                    <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+        
+        <!-- بطاقة الإحصائيات العامة الكبرى -->
+        <section class="card tracker-hero-card" style="background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green)); color: white; text-align: center; padding: 35px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+            <h1 style="font-family: 'Amiri', serif; font-size: 2.6rem; color: var(--gold-light); margin-bottom: 10px;">سجل طاعاتك وأذكار الصلوات</h1>
+            <p style="font-size: 1.1rem; opacity: 0.95; margin-bottom: 25px; max-width: 700px; margin-left: auto; margin-right: auto;">حاسب نفسك يومياً، وتتبع أداء الصلوات المكتوبة مع أذكار دبر كل صلاة ليتضاعف رصيد حسناتك وترتفع درجاتك.</p>
+            
+            <div class="stats-counter-box" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+                <div class="stat-box" style="background: rgba(255,255,255,0.12); padding: 18px 30px; border-radius: 15px; backdrop-filter: blur(5px);">
+                    <span style="display: block; font-size: 0.95rem; opacity: 0.85; margin-bottom: 5px;">الصلوات المؤداة اليوم</span>
+                    <strong id="completed-prayers-count" style="font-size: 2.2rem; color: var(--gold-light);">0 / 5</strong>
+                </div>
+                <div class="stat-box" style="background: rgba(255,255,255,0.12); padding: 18px 30px; border-radius: 15px; backdrop-filter: blur(5px);">
+                    <span style="display: block; font-size: 0.95rem; opacity: 0.85; margin-bottom: 5px;">رصيد الحسنات التقديري</span>
+                    <strong id="total-hasanat-count" style="font-size: 2.2rem; color: var(--gold-light);">0</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- جدول تتبع الصلوات وأذكارها -->
+        <section class="card" style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+            <div class="section-header" style="margin-bottom: 25px; border-bottom: 2px solid #edf2f7; padding-bottom: 15px;">
+                <h2 style="color: var(--emerald-green); font-size: 1.6rem;"><i class="fa-solid fa-clipboard-check"></i> الفرائض اليومية وأذكار دبر الصلاة</h2>
+                <p style="color: #718096; font-size: 0.95rem; margin-top: 5px;">سجل أداء الصلاة ثم تلو أذكارها المرفقة لتنال الأجر كاملاً إن شاء الله.</p>
+            </div>
+            
+            <div id="tracker-list" style="display: flex; flex-direction: column; gap: 20px;">
+                <!-- يتم تعبئة الصلوات والأذكار برمجياً هنا -->
+            </div>
+        </section>
+
+    </main>
+
+           <!-- الفوتر -->
+           <footer class="main-footer">
+            <div class="container footer-content">
+                <div class="footer-brand">
+                    <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                    <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <a href="quran.html">القرآن الكريم</a>
+                    <a href="prophets.html">قصص الأنبياء</a>
+                    <a href="salah-tracker.html">سجل الطاعات</a>
+                    <a href="azkar.html">الأذكار اليومية</a>
+                </div>
+                <!-- قسم وسائل التواصل الاجتماعي -->
+                <div class="footer-social">
+                    <h4>تواصل معي</h4>
+                    <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                        <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+                <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+            </div>
+        </footer>
+
+    <!-- سكربت حساب الحسنات والأذكار -->
+    <script>
+        const prayersData = [
+            { id: 'fajr', name: 'صلاة الفجر', hasanat: 1000, zikrReward: 150, zikrText: 'أستغفر الله (3 مرات)، اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام.' },
+            { id: 'dhuhr', name: 'صلاة الظهر', hasanat: 1000, zikrReward: 150, zikrText: 'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهي على كل شيء قدير.' },
+            { id: 'asr', name: 'صلاة العصر', hasanat: 1000, zikrReward: 150, zikrText: 'سُبحان الله (33)، الحمد لله (33)، الله أكبر (33)، وتمام المائة: لا إله إلا الله.' },
+            { id: 'maghrib', name: 'صلاة المغرب', hasanat: 1000, zikrReward: 150, zikrText: 'اللهم أجرني من النار (7 مرات عند الفجر والمغرب).' },
+            { id: 'isha', name: 'صلاة العشاء', hasanat: 1000, zikrReward: 150, zikrText: 'قراءة آية الكرسي والمعوذتين (الإخلاص، الفلق، الناس) دبر كل صلاة.' }
+        ];
+
+        function renderTracker() {
+            const container = document.getElementById('tracker-list');
+            const savedState = JSON.parse(localStorage.getItem('sakina_prayers_extended') || '{}');
+            
+            container.innerHTML = '';
+            let completedCount = 0;
+            let totalHasanat = 0;
+
+            prayersData.forEach(p => {
+                const isPrayerChecked = savedState[p.id]?.prayer || false;
+                const isZikrChecked = savedState[p.id]?.zikr || false;
+
+                if(isPrayerChecked) {
+                    completedCount++;
+                    totalHasanat += p.hasanat;
+                }
+                if(isZikrChecked) {
+                    totalHasanat += p.zikrReward;
+                }
+
+                const item = document.createElement('div');
+                item.style.background = '#fcfdfd';
+                item.style.borderRadius = '15px';
+                item.style.border = isPrayerChecked ? '1px solid #a5d6a7' : '1px solid #e2e8f0';
+                item.style.padding = '20px';
+                item.style.boxShadow = '0 2px 5px rgba(0,0,0,0.01)';
+
+                item.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border-bottom: 1px dashed #edf2f7; padding-bottom: 15px;">
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 45px; height: 45px; background: ${isPrayerChecked ? '#dcfce7' : '#f1f5f9'}; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--emerald-green); font-size: 1.2rem;">
+                                <i class="fa-solid fa-mosque"></i>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.2rem; color: #2d3748; margin-bottom: 3px;">${p.name}</h3>
+                                <span style="font-size: 0.85rem; color: #718096;">أجر الصلاة: 1,000 حسنة</span>
+                            </div>
+                        </div>
+                        <button onclick="togglePrayerStatus('${p.id}', 'prayer')" style="padding: 10px 22px; border-radius: 25px; border: none; cursor: pointer; font-family: 'Cairo'; font-weight: bold; background: ${isPrayerChecked ? 'var(--emerald-green)' : '#e2e8f0'}; color: ${isPrayerChecked ? 'white' : '#4a5568'}; transition: 0.3s;">
+                            ${isPrayerChecked ? '<i class="fa-solid fa-check"></i> تم أداء الصلاة' : 'تسجيل أداء الصلاة'}
+                        </button>
+                    </div>
+
+                    <!-- قسم أذكار الصلاة -->
+                    <div style="margin-top: 15px; background: ${isZikrChecked ? '#f0fdf4' : '#f8fafc'}; padding: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; border: 1px solid ${isZikrChecked ? '#bbf7d0' : '#e2e8f0'};">
+                        <div style="max-width: 700px;">
+                            <h4 style="font-size: 0.95rem; color: var(--emerald-dark); margin-bottom: 5px;"><i class="fa-solid fa-hands-praying"></i> أذكار دبر ${p.name}:</h4>
+                            <p style="font-family: 'Amiri', serif; font-size: 1.1rem; color: #1e293b; line-height: 1.6;">«${p.zikrText}»</p>
+                            <span style="font-size: 0.8rem; color: #059669; font-weight: bold; display: inline-block; margin-top: 5px;">أجر الأذكار: +${p.zikrReward} حسنة</span>
+                        </div>
+                        <button onclick="togglePrayerStatus('${p.id}', 'zikr')" style="padding: 8px 18px; border-radius: 20px; border: 1px solid var(--emerald-green); cursor: pointer; font-family: 'Cairo'; font-weight: bold; background: ${isZikrChecked ? 'var(--emerald-green)' : 'transparent'}; color: ${isZikrChecked ? 'white' : 'var(--emerald-green)'}; transition: 0.3s;">
+                            ${isZikrChecked ? '<i class="fa-solid fa-check-double"></i> تمت قراءة الأذكار' : 'قَرَأْتُ الأذكار'}
+                        </button>
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+
+            document.getElementById('completed-prayers-count').textContent = `${completedCount} / 5`;
+            document.getElementById('total-hasanat-count').textContent = totalHasanat.toLocaleString();
+        }
+
+        function togglePrayerStatus(id, type) {
+            const savedState = JSON.parse(localStorage.getItem('sakina_prayers_extended') || '{}');
+            if(!savedState[id]) {
+                savedState[id] = { prayer: false, zikr: false };
+            }
+            
+            if(type === 'prayer') {
+                savedState[id].prayer = !savedState[id].prayer;
+            } else if(type === 'zikr') {
+                savedState[id].zikr = !savedState[id].zikr;
+            }
+
+            localStorage.setItem('sakina_prayers_extended', JSON.stringify(savedState));
+            renderTracker();
+        }
+
+        document.addEventListener('DOMContentLoaded', renderTracker);
+    </script>
+    
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

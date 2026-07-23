@@ -1,0 +1,31 @@
+body.dark-mode {
+    background-color: #0b131a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .card,
+body.dark-mode .feature-card,
+body.dark-mode .tafsir-box,
+body.dark-mode .surah-card {
+    background-color: #111e29;
+    color: #ffffff;
+    border-color: rgba(201, 162, 39, 0.2);
+}
+
+body.dark-mode .site-header {
+    background: rgba(17, 30, 41, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .nav-links a {
+    color: #ffffff;
+}
+
+body.dark-mode .verse-box {
+    background: #162635;
+}
+
+body.dark-mode .surah-number {
+    background: #1f3347;
+    color: var(--gold-light);
+}

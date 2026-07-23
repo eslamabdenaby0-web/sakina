@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعليم الصلاة الصحيحة بالتفصيل الدقيق - سكينة</title>
+    <!-- خطوط عربية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ربط ملفات الـ CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/dark-theme.css">
+    <style>
+        .step-card-detailed {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+        @media (max-width: 768px) {
+            .step-card-detailed {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .step-icon-wrapper {
+                margin: 0 auto;
+            }
+        }
+        .step-icon-wrapper {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--emerald-green);
+            border: 2px solid #bbf7d0;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.1);
+        }
+        .step-tag {
+            background: var(--emerald-green);
+            color: white;
+            font-size: 0.85rem;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .speech-box-detailed {
+            background: #f8fafc;
+            border-right: 4px solid var(--islamic-gold, #d97706);
+            padding: 18px 22px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+            text-align: right;
+        }
+        .speech-box-detailed h5 {
+            color: #b45309;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .speech-content-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.35rem;
+            color: #1e293b;
+            line-height: 2;
+        }
+    </style>
+</head>
+<body>
+
+  <!-- شريط التنقل العلوي -->
+  <header class="site-header">
+    <div class="nav-container">
+        <a href="index.html" class="brand-logo">
+            <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+            <span class="brand-name">سكينة</span>
+        </a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                <li><a href="tafsir.html"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </div>
+</header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container" style="padding-top: 40px; padding-bottom: 60px;">
+        
+        <!-- رأس الصفحة -->
+        <div class="card" style="text-align: center; padding: 45px; margin-bottom: 35px; background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green)); color: white; border-radius: 20px;">
+            <span class="badge" style="background: rgba(255,255,255,0.2); color: white; margin-bottom: 15px;">دليل المسلم الشامل</span>
+            <h1 style="font-family: 'Amiri', serif; font-size: 2.6rem; margin-bottom: 15px; color: var(--gold-light);">تعليم الصلاة الصحيحة (تفصيلي بالخطوات والأذكار)</h1>
+            <p style="font-size: 1.1rem; opacity: 0.95; max-width: 750px; margin: 0 auto;">شرح فقهي مبسط ودقيق لصفحة صلاة النبي صلى الله عليه وسلم، مع بيان الأركان والهيئات وما يُقال في كل ركن بالحرف والتشكيل.</p>
+        </div>
+
+        <!-- خطوات الصلاة التفصيلية -->
+        <div class="salah-steps-list">
+
+            <!-- الخطوة 1: الوضوء واستقبال القبلة -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-faucet-drip"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة الأولى</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">الوضوء واستقبال القبلة والنية</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> الوضوء شرط أساسي لصحة الصلاة، فتتوضأ إسباغاً للوضوء كما أمر الله سبحانه وتعالى. ثم تقف مستقبلاً الكعبة المشرفة (القبلة) بجميع بدنك، وتنوي بقلبك الدخول في الصلاة (فرض العشاء، الفجر، إلخ) دون الحاجة للتلفظ بالنية بصوت عالٍ.
+                    </p>
+                </div>
+            </div>
+
+            <!-- الخطوة 2: تكبيرة الإحرام والاستفتاح -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-hands-holding"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة الثانية</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">تكبيرة الإحرام ووضع اليدين على الصدر</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> ترفع يديك ممدودتي الأصابع حذو منكبيك أو أذنيك، وتكبر تكبيرة الإحرام (بها تحرم عليك أمور الدنيا وتبدأ الصلاة). ثم تضع كف يدك اليمنى على ظهر كف يدك اليسرى وتضعهما على صدرك، وتنظر ببصرك إلى موضع سجودك خشوعاً وخضوعاً.
+                    </p>
+                    <div class="speech-box-detailed">
+                        <h5><i class="fa-solid fa-comment-dots"></i> ما يُقال في دعاء الاستفتاح (سنة):</h5>
+                        <p class="speech-content-text">«سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، وَتَبَارَكَ اسْمُكَ، وَتَعَالَى جَدُّكَ، وَلَا إِلَهَ غَيْرُكَ»<br>أو تقول: «اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَايَ كَمَا بَاعَدْتَ بَيْنَ المَشْرِقِ وَالمَغْرِبِ...»</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخطوة 3: قراءة الاستعاذة والفاتحة -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة الثالثة</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">الاستعاذة وقراءة الفاتحة وما تيسر</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> تستعيذ بالله سراً من الشيطان الرجيم، ثم تقرأ الفاتحة في كل ركعة (فهي ركن لا تصح الصلاة بدونها)، وتقول في نهايتها «آمين» بصوت مسموع أو سري بح حسب الصلاة. ثم تقرأ ما تيسر من سور القرآن أو آياته بعدها في الركعتين الأوليين.
+                    </p>
+                    <div class="speech-box-detailed">
+                        <h5><i class="fa-solid fa-comment-dots"></i> ما تُقره وتقوله:</h5>
+                        <p class="speech-content-text">«أَعُوذُ بِاللَّهِ مِنَ الشَّيطَانِ الرَّجِيمِ. بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ. الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمَٰنِ الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ ۝ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ۝ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ۝ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ۝ آمين»</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخطوة 4: الركوع -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-person-arrow-down"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة الرابعة</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">الركوع وطمأنينة الظهر</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> تكبر وتُهوي للركوع بانحناء ظهرك بحيث يكون مستوياً أفقياً (لو صُب عليه ماءٌ لاستقر)، وتجعل رأسك بحياله لا ترتفع ولا تخفض، وتلقي بكفيك مفرجتي الأصابع على ركبتيك ممسكاً بهما جيداً بخشوع وطمأنينة.
+                    </p>
+                    <div class="speech-box-detailed">
+                        <h5><i class="fa-solid fa-comment-dots"></i> ما يُقال في الركوع:</h5>
+                        <p class="speech-content-text">«سُبْحَانَ رَبِّيَ الْعَظِيمِ» (تقولها 3 مرات أو أكثر)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخطوة 5: الاعتدال من الركوع -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-person"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة الخامسة</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">الاعتدال والوقوف التام بعد الركوع</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> ترفع رأسك من الركوع معتدلاً قائماً حتى تعود كل فقرة وعظم إلى مكانه (وهو ركن طمأنينة مهم جداً تسمى "الطمأنينة في الاعتدال")، وتضع يديك على صدرك أو ترسلهما بجانبك (والأكثر صحة وضعهما على الصدر).
+                    </p>
+                    <div class="speech-box-detailed">
+                        <h5><i class="fa-solid fa-comment-dots"></i> ما يُقال أثناء الاعتدال:</h5>
+                        <p class="speech-content-text">حين ترفع تقول: <strong>«سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ»</strong>، وحين تستوي قائماً تقول: <strong>«رَبَّنَا وَلَكَ الْحَمْدُ حَمْداً كَثِيراً طَيِّباً مُبَارَكاً فِيهِ»</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخطوة 6: السجود الأول -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-child-reaching"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة السادسة</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">السجود على الأعضاء السبعة</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> تكبر وتهوي للسجود واضعاً ركبتيك أولاً على الأرض ثم يديك ثم جبهتك وأنفك معاً. وتسجد على 7 أعضاء: (الجبهة والأنف، الكفان، الركبتان، وأطراف أصابع القدمين). وتباعد عضديك عن جنبيك وبطنيك عن فخذيك ولا تفرش ذراعيك على الأرض كالكلب.
+                    </p>
+                    <div class="speech-box-detailed">
+                        <h5><i class="fa-solid fa-comment-dots"></i> ما يُقال في السجود:</h5>
+                        <p class="speech-content-text">«سُبْحَانَ رَبِّيَ الأَعْلَى» (3 مرات)، وتُكثر من الدعاء والأمنيات بقلب خاشع لأن العبد أقرب ما يكون لربه وهو ساجد.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخطوة 7: الجلوس بين السجدتين -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-chair"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة السابعة</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">الجلوس بين السجدتين (الافتراش)</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> ترفع رأسك من السجود الأولى مكبراً، وتجلس جلوساً مطمئناً بحيث "تفرش" رجلك اليسرى وتجلس عليها وتُنصب رجلك اليمنى (تكون أصابعها موجهة للقبلة)، وتستقر حتى تطمئن كل أعضائك في الجلوس.
+                    </p>
+                    <div class="speech-box-detailed">
+                        <h5><i class="fa-solid fa-comment-dots"></i> ما يُقال بين السجدتين:</h5>
+                        <p class="speech-content-text">«رَبِّ اغْفِرْ لِي، رَبِّ اغْفِرْ لِي»<br>أو تقول: «اللَّهُمَّ اغْفِرْ لِي، وَارْحَمْنِي، وَاهْدِنِي، وَاجْبُرْنِي، وَعَافِنِي، وَارْزُقْنِي»</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الخطوة 8: السجود الثاني والنهوض -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-child-reaching"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة الثامنة</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">السجود الثاني والنهوض للركعة التالية</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> تكبر وتسجد السجدة الثانية تماماً مثل الأولى وتقول «سُبْحَانَ رَبِّيَ الأَعْلَى» (3 مرات). ثم ترفع رأسك مكبراً وتنهض للركعة الثانية معتمداً على ركبتيك والأرض وتبدأ الركعة الجديدة بقراءة الفاتحة. (ملاحظة: بعد إكمال الركعتين الأوليين في الصلوات الثلاثية والرباعية، تجلس للتشهد الأول).
+                    </p>
+                </div>
+            </div>
+
+            <!-- الخطوة 9: التشهد الأخير والسلام -->
+            <div class="step-card-detailed">
+                <div class="step-icon-wrapper">
+                    <i class="fa-solid fa-hands-praying"></i>
+                </div>
+                <div>
+                    <span class="step-tag">الخطوة التاسعة والأخيرة</span>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">التشهد الأخير والتسليم من الصلاة</h3>
+                    <p style="color: #475569; line-height: 1.8; font-size: 1.05rem;">
+                        <strong>كيف تفعل؟</strong> في الجلوس الأخير لصلاتك، تجلس متوكئاً على وركك الأيسر وتخرج رجليك من جهة واحدة، وتقرأ التشهد كاملاً والصلاة الإبراهيمية، وتتعوذ بالله من أربع، ثم تلتفت يميناً ثم يساراً مسلماً للخروج من الصلاة.
+                    </p>
+                    <div class="speech-box-detailed">
+                        <h5><i class="fa-solid fa-comment-dots"></i> صيغة التشهد الأخير والسلام:</h5>
+                        <p class="speech-content-text">«التَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ، السَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ، السَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ. أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ، وَأَشْهَدُ أَنَّ مُحَمَّداً عَبْدُهُ وَرَسُولُهُ.<br>اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ...»<br><br>ثم تسلم يميناً: <strong>«السَّلَامُ عَلَيْكُمْ وَرَحْمَةُ اللَّهِ»</strong>، وتسلم يساراً بمثلها.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- زر العودة -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="btn-primary" style="text-decoration: none; padding: 12px 35px; display: inline-block; font-size: 1.05rem;">
+                <i class="fa-solid fa-arrow-right"></i> العودة إلى الرئيسية
+            </a>
+        </div>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026</p>
+        </div>
+    </footer>
+
+
+      <!-- الفوتر -->
+      <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="prophets.html">قصص الأنبياء</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+            <!-- قسم وسائل التواصل الاجتماعي -->
+            <div class="footer-social">
+                <h4>تواصل معي</h4>
+                <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+        </div>
+    </footer>  
+      <!-- ربط السكربتات -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

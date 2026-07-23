@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سكينة | المنصة الإسلامية الشاملة للقلوب المطمئنة</title>
+    <!-- خطوط عربية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ربط ملفات الـ CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/dark-theme.css">
+</head>
+<body>
+
+    <!-- شريط التنقل العلوي -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+                <span class="brand-name">سكينة</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                    <li><a href="tafsir.html"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                    <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                    <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                    <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                    <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                    <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                    <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                    <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+        
+        <!-- 1. قسم الهيرو (Hero Section) -->
+        <section class="hero-card card">
+            <div class="hero-content">
+                <span class="badge">واحتك الروحية المتكاملة</span>
+                <h1 class="hero-title">اطمئن بذكر الله في منصة <span class="gold-text">سكينة</span></h1>
+                <p class="hero-subtitle">منصتك الشاملة لتلاوة القرآن، متابعة الصلوات، قراءة الأذكار، قصص الأنبياء، وحساب الحسنات بتصميم فائق الجودة والراحة البصرية.</p>
+                <div class="hero-btns">
+                    <a href="quran.html" class="btn-primary"><i class="fa-solid fa-book-open"></i> ابدأ التلاوة</a>
+                    <a href="salah-tracker.html" class="btn-primary"><i class="fa-solid fa-calculator"></i> احسب حسناتك</a>
+                </div>
+            </div>
+            <div class="hero-graphic">
+                <div class="islamic-star-badge"><i class="fa-solid fa-star-and-crescent"></i></div>
+            </div>
+        </section>
+
+        <!-- 2. قسم آية اليوم المتجددة -->
+        <section class="card daily-verse-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-book-quran"></i> آية اليوم وتفسيرها</h2>
+                <button onclick="loadNewDailyVerse()" class="btn-text"><i class="fa-solid fa-rotate"></i> آية أخرى</button>
+            </div>
+            <div class="verse-box">
+                <p id="main-daily-verse" class="verse-text">"أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"</p>
+                <span id="main-verse-source" class="verse-source">[سورة الرعد: 28]</span>
+                <div class="tafsir-box">
+                    <h4><i class="fa-solid fa-lightbulb"></i> التفسير الميسر:</h4>
+                    <p id="main-verse-tafsir">أي: بذكر الله تسكن القلوب وتطمئن، وتزول عنها الوحشة والقلق، وتصل إلى اليقين الحقيقي والأمن الدائم.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. قسم أقسام المنصة السريعة (Grid) -->
+        <section class="features-grid">
+            <a href="quran.html" class="feature-card">
+                <i class="fa-solid fa-quran"></i>
+                <h3>القرآن الكريم</h3>
+                <p>تصفح المصحف كاملاً مع التفسير وأصوات القراء.</p>
+            </a>
+            <a href="prayers.html" class="feature-card">
+                <i class="fa-solid fa-mosque"></i>
+                <h3>مواقيت الصلاة</h3>
+                <p>مواعيد الصلوات بدقة مع العد التنازلي للصلاة القادمة.</p>
+            </a>
+            <a href="azkar.html" class="feature-card">
+                <i class="fa-solid fa-hands-praying"></i>
+                <h3>حصن المسلم</h3>
+                <p>أذكار الصباح والمساء وكل المناسبات بعداد تفاعلي.</p>
+            </a>
+            <a href="prophets.html" class="feature-card">
+                <i class="fa-solid fa-book-open-reader"></i>
+                <h3>قصص الأنبياء</h3>
+                <p>عِبَر وقصص الرسل والأنبياء كما وردت في القرآن الكريم.</p>
+            </a>
+            <a href="tasbeeh.html" class="feature-card">
+                <i class="fa-solid fa-circle-notch"></i>
+                <h3>السبحة الإلكترونية</h3>
+                <p>سبحة رقمية متطورة لتسبيح الله وحفظ الأذكار اليومية.</p>
+            </a>
+            <a href="hadith.html" class="feature-card">
+                <i class="fa-solid fa-feather"></i>
+                <h3>الأحاديث النبوية</h3>
+                <p>باقة مختارة من رياض الصالحين والأربعين النووية.</p>
+            </a>
+            <a href="qibla.html" class="feature-card">
+                <i class="fa-solid fa-compass"></i>
+                <h3>اتجاه القبلة</h3>
+                <p>معرفة اتجاه الكعبة المشرفة بدقة أينما كنت.</p>
+            </a>
+            <a href="calendar.html" class="feature-card">
+                <i class="fa-solid fa-calendar-days"></i>
+                <h3>التقويم الهجري</h3>
+                <p>متابعة التواريخ الإسلامية والمناسبات الدينية بسهولة.</p>
+            </a>
+        </section>
+
+        <!-- السكشنين الجديدين: تعليم الصلاة والوضوء -->
+        <section style="margin-top: 30px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
+            
+            <!-- 1. سكشن تعليم الصلاة الصحيحة -->
+            <div class="card" style="padding: 25px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, #f0fdf4, #ffffff); border-right: 5px solid var(--emerald-green);">
+                <div>
+                    <div style="font-size: 2.2rem; color: var(--emerald-green); margin-bottom: 12px;">
+                        <i class="fa-solid fa-person-praying"></i>
+                    </div>
+                    <h3 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.4rem;">تعليم الصلاة الصحيحة</h3>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                        تعرف على أركان الصلاة، وواجباتها، وسننها، وصفة صلاة النبي صلى الله عليه وسلم خطوة بخطوة بالصور والشرح الميسر.
+                    </p>
+                </div>
+                <a href="learn-salah.html" class="btn-primary" style="text-align: center; display: block; text-decoration: none;">
+                    <i class="fa-solid fa-book-bookmark"></i> ابدأ تعلم الصلاة
+                </a>
+            </div>
+
+            <!-- 2. سكشن تعليم الوضوء بخطوات مبسطة -->
+            <div class="card" style="padding: 25px; display: flex; flex-direction: column; justify-content: space-between; background: linear-gradient(135deg, #f0f9ff, #ffffff); border-right: 5px solid #0284c7;">
+                <div>
+                    <div style="font-size: 2.2rem; color: #0284c7; margin-bottom: 12px;">
+                        <i class="fa-solid fa-faucet-drip"></i>
+                    </div>
+                    <h3 style="color: #0369a1; margin-bottom: 10px; font-size: 1.4rem;">تعليم الوضوء بخطوات مبسطة</h3>
+                    <p style="color: #475569; font-size: 0.95rem; line-height: 1.7; margin-bottom: 20px;">
+                        الوضوء شطر الإيمان ومفتاح الصلاة. تعلم فروضه، وسننه، ومبطلاته بطريقة مبسطة وصحيحة وفق السنة النبوية.
+                    </p>
+                </div>
+                <a href="wudu-learn.html" class="btn-secondary" style="text-align: center; display: block; text-decoration: none; background: #0284c7; color: white;">
+                    <i class="fa-solid fa-water"></i> ابدأ تعلم الوضوء
+                </a>
+            </div>
+
+        </section>
+
+        <!-- 4. سكشن: الطقس الروحي وإمساكية اليوم -->
+        <section class="card" style="margin-top: 30px; padding: 25px;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-cloud-sun"></i> الطقس الروحي وإمساكية اليوم</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="background: #f9fbf9; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
+                    <i class="fa-solid fa-sun" style="font-size: 2rem; color: #d97706; margin-bottom: 10px;"></i>
+                    <h4 style="color: var(--emerald-dark); margin-bottom: 5px;">شروق الشمس</h4>
+                    <p style="font-weight: bold; color: #4a5568;">05:12 ص</p>
+                </div>
+                <div style="background: #f9fbf9; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
+                    <i class="fa-solid fa-moon" style="font-size: 2rem; color: var(--emerald-green); margin-bottom: 10px;"></i>
+                    <h4 style="color: var(--emerald-dark); margin-bottom: 5px;">منتصف الليل الشرعي</h4>
+                    <p style="font-weight: bold; color: #4a5568;">11:45 م</p>
+                </div>
+                <div style="background: #f9fbf9; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0; text-align: center;">
+                    <i class="fa-solid fa-hourglass-half" style="font-size: 2rem; color: #0284c7; margin-bottom: 10px;"></i>
+                    <h4 style="color: var(--emerald-dark); margin-bottom: 5px;">الثلث الأخير من الليل</h4>
+                    <p style="font-weight: bold; color: #4a5568;">02:30 ص</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. سكشن: نبض الذكر (أذكار سريعة) -->
+        <section class="card" style="margin-top: 30px; padding: 25px;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-heart-pulse"></i> نبض الذكر (أذكار سريعة)</h2>
+                <a href="azkar.html" class="btn-text">عرض الكل <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 15px;">
+                <div style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); padding: 20px; border-radius: 15px; border-right: 5px solid var(--emerald-green);">
+                    <h4 style="color: var(--emerald-dark); margin-bottom: 8px;"><i class="fa-solid fa-seedling"></i> استغفار دائم</h4>
+                    <p style="font-family: 'Amiri', serif; font-size: 1.2rem; color: #166534; margin-bottom: 10px;">«أستغفر الله العظيم واتوب إليه»</p>
+                    <span style="font-size: 0.85rem; color: #15803d; font-weight: bold;">تُقال 100 مرة للمغفرة وتفريغ الهموم.</span>
+                </div>
+                <div style="background: linear-gradient(135deg, #fdf4f0, #fef2f2); padding: 20px; border-radius: 15px; border-right: 5px solid #d97706;">
+                    <h4 style="color: #b45309; margin-bottom: 8px;"><i class="fa-solid fa-fire"></i> الباقيات الصالحات</h4>
+                    <p style="font-family: 'Amiri', serif; font-size: 1.2rem; color: #9a3412; margin-bottom: 10px;">«سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ»</p>
+                    <span style="font-size: 0.85rem; color: #c2410c; font-weight: bold;">أحب الكلام إلى الله وخفيفات على اللسان.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. سكشن: مختارات من رياض الصالحين (حديث نبوي اليوم) -->
+        <section class="card" style="margin-top: 30px; padding: 25px;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-feather-pointed"></i> من هدي النبوة (حديث اليوم)</h2>
+                <a href="hadith.html" class="btn-text">المزيد <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <div style="background: #fdfbf7; padding: 25px; border-radius: 15px; border: 1px solid #e2e8f0; margin-top: 15px;">
+                <p style="font-family: 'Amiri', serif; font-size: 1.35rem; line-height: 2.2; color: #2d3748; margin-bottom: 15px; text-align: center;">
+                    «مَنْ سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ له به طَرِيقًا إلى الجَنَّةِ»
+                </p>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #edf2f7; padding-top: 15px; font-size: 0.95rem; color: #718096;">
+                    <span><i class="fa-solid fa-book"></i> الراوي: أبو هريرة</span>
+                    <span style="font-weight: bold; color: var(--emerald-green);"><i class="fa-solid fa-check-circle"></i> صحيح مسلم</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. سكشن: تحدي اليوم الروحي -->
+        <section class="card" style="margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #f8fafc, #edf2f7); border: 1px solid #cbd5e1;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-medal" style="color: #d97706;"></i> تحدي اليوم الروحي</h2>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 15px;">
+                <div style="background: white; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                    <div>
+                        <h4 style="color: var(--emerald-dark); margin-bottom: 5px;"><i class="fa-solid fa-hands-holding-child"></i> صلة الرحم اليوم</h4>
+                        <p style="font-size: 0.95rem; color: #64748b;">اتصل بأحد أقاربك اطمئن عليه لتكسب الأجر وتصل رحمك.</p>
+                    </div>
+                    <span style="background: #dcfce7; color: #166534; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.85rem;">سنة مؤكدة</span>
+                </div>
+                <div style="background: white; padding: 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+                    <div>
+                        <h4 style="color: var(--emerald-dark); margin-bottom: 5px;"><i class="fa-solid fa-book-open"></i> ورد القرآن اليومي</h4>
+                        <p style="font-size: 0.95rem; color: #64748b;">اقرأ ولو صفحة واحدة بتدبر من كتاب الله عز وجل.</p>
+                    </div>
+                    <span style="background: #e0f2fe; color: #0369a1; padding: 8px 15px; border-radius: 20px; font-weight: bold; font-size: 0.85rem;">نور وضياء</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. قسم بستان الأدعية المستجابة -->
+        <section class="card" style="margin-top: 30px; padding: 25px;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-hands-bubbles" style="color: var(--emerald-green);"></i> بستان الأدعية المستجابة</h2>
+                <a href="duas.html" class="btn-text">المزيد من الأدعية <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 15px;">
+                <div style="background: #f8fafc; padding: 22px; border-radius: 15px; border: 1px solid #e2e8f0; position: relative;">
+                    <span style="position: absolute; top: 15px; left: 15px; background: #e0f2fe; color: #0369a1; font-size: 0.75rem; padding: 4px 10px; border-radius: 10px; font-weight: bold;">تفريغ الهم</span>
+                    <h4 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.1rem;"><i class="fa-solid fa-face-smile-beam"></i> دعاء الكرب والهم</h4>
+                    <p style="font-family: 'Amiri', serif; font-size: 1.25rem; color: #1e293b; line-height: 1.8; margin-bottom: 12px;">«اللَّهُمَّ إِنِّي عَبْدُكَ، ابْنُ عَبْدِكَ، ابْنُ أَمَتِكَ، نَاصِيَتِي بِيَدِكَ، مَاضٍ فِيَّ حُكْمُكَ، عَدْلٌ فِيَّ قَضَاؤُكَ...»</p>
+                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;"><i class="fa-solid fa-circle-info"></i> رواه أحمد وصححه الألباني</span>
+                </div>
+                <div style="background: #f8fafc; padding: 22px; border-radius: 15px; border: 1px solid #e2e8f0; position: relative;">
+                    <span style="position: absolute; top: 15px; left: 15px; background: #dcfce7; color: #166534; font-size: 0.75rem; padding: 4px 10px; border-radius: 10px; font-weight: bold;">سؤال العافية</span>
+                    <h4 style="color: var(--emerald-dark); margin-bottom: 10px; font-size: 1.1rem;"><i class="fa-solid fa-shield-heart"></i> دعاء العفو والعافية</h4>
+                    <p style="font-family: 'Amiri', serif; font-size: 1.25rem; color: #1e293b; line-height: 1.8; margin-bottom: 12px;">«اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ، اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي دِينِي وَدُنْيَايَ...»</p>
+                    <span style="font-size: 0.85rem; color: #64748b; font-weight: 600;"><i class="fa-solid fa-circle-info"></i> رواه أبو داود والترمذي</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. قسم حصن أسماء الله الحسنى -->
+        <section class="card" style="margin-top: 30px; padding: 25px;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-gem" style="color: #d97706;"></i> من أسماء الله الحسنى ومعانيها</h2>
+                <a href="names-of-allah.html" class="btn-text">عرض كافة الأسماء <i class="fa-solid fa-arrow-left"></i></a>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px;">
+                <div style="background: linear-gradient(135deg, #fdfbf7, #f7f3eb); padding: 20px; border-radius: 14px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                    <h3 style="color: var(--emerald-green); font-size: 1.8rem; font-family: 'Amiri', serif; margin-bottom: 8px;">اللَّطِيف</h3>
+                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">البر بعباده، الرفيق بهم، الذي يدرك خفايا الأمور ومطالبها بلطف خفي.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fdfbf7, #f7f3eb); padding: 20px; border-radius: 14px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                    <h3 style="color: var(--emerald-green); font-size: 1.8rem; font-family: 'Amiri', serif; margin-bottom: 8px;">الْوَدُود</h3>
+                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">المحب لعباده الصالحين، والمحبوب في قلوب أوليائه بما أنعم عليهم.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fdfbf7, #f7f3eb); padding: 20px; border-radius: 14px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                    <h3 style="color: var(--emerald-green); font-size: 1.8rem; font-family: 'Amiri', serif; margin-bottom: 8px;">الْفَتَّاح</h3>
+                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">الذي يفتح أبواب الرحمة والرزق، ويحكم بين عباده بالحق والعدل.</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #fdfbf7, #f7f3eb); padding: 20px; border-radius: 14px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                    <h3 style="color: var(--emerald-green); font-size: 1.8rem; font-family: 'Amiri', serif; margin-bottom: 8px;">الرَّزَّاق</h3>
+                    <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">الذي خلق الأسباب وكفل الأرزاق، وبسط فضله على جميع المخلوقات.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. قسم دعاء واطمئنان (Banner) -->
+        <section class="card" style="margin-top: 30px; background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green)); color: white; padding: 35px; border-radius: 20px; text-align: center;">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 style="font-family: 'Amiri', serif; font-size: 2.3rem; color: var(--gold-light); margin-bottom: 15px;">«رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي»</h2>
+                <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95; margin-bottom: 25px;">اجعل لسانك رطباً بذكر الله، وتابع صلواتك وطاعاتك عبر سجل الحسنات لتجد أثرها في بركة وقتك وراحة بالك.</p>
+                <a href="duas.html" style="display: inline-block; padding: 12px 35px; background: var(--gold-light); color: #fff; border-radius: 30px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">تصفح الأدعية المستجابة</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="prophets.html">قصص الأنبياء</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+            <!-- قسم وسائل التواصل الاجتماعي -->
+            <div class="footer-social">
+                <h4>تواصل معي</h4>
+                <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+        </div>
+    </footer>
+
+    <!-- ربط السكربتات -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

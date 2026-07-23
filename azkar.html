@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حصن المسلم والأذكار اليومية | منصة سكينة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/dark-theme.css">
+    <style>
+        .category-tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .category-btn {
+            background: #f1f5f9;
+            color: #4a5568;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: 0.3s;
+        }
+        .category-btn.active, .category-btn:hover {
+            background: var(--emerald-green);
+            color: white;
+        }
+        .section-title {
+            color: var(--emerald-green);
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 8px;
+            margin: 30px 0 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- شريط التنقل العلوي -->
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+                <span class="brand-name">سكينة</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                    <li><a href="tafsir.html" class="active"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                    <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                    <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                    <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                    <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                    <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                    <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                    <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+        
+        <section class="card" style="background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green)); color: white; text-align: center; padding: 35px; border-radius: 20px; margin-bottom: 25px;">
+            <h1 style="font-family: 'Amiri', serif; font-size: 2.6rem; color: var(--gold-light); margin-bottom: 10px;">حصن المسلم والأذكار اليومية</h1>
+            <p style="font-size: 1.1rem; opacity: 0.95;">مكتبة شاملة وكاملة لكل أذكار اليوم والليلة وصحيح الأدعية النبوية.</p>
+        </section>
+
+        <!-- أزرار التصنيفات للتنقل السريع -->
+        <div class="category-tabs" id="category-tabs">
+            <button class="category-btn active" onclick="filterCategory('all', this)">جميع الأبواب</button>
+            <button class="category-btn" onclick="filterCategory('morning', this)">أذكار الصباح</button>
+            <button class="category-btn" onclick="filterCategory('evening', this)">أذكار المساء</button>
+            <button class="category-btn" onclick="filterCategory('sleep', this)">أذكار النوم</button>
+            <button class="category-btn" onclick="filterCategory('prayer', this)">أذكار الصلاة</button>
+            <button class="category-btn" onclick="filterCategory('praise', this)">التسبيح والاستغفار</button>
+        </div>
+
+        <!-- قائمة الأذكار -->
+        <section class="card" style="background: white; padding: 25px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+            <div id="azkar-container" style="display: flex; flex-direction: column; gap: 20px;">
+                <!-- يتم الحقن تلقائياً -->
+            </div>
+        </section>
+
+    </main>
+
+
+
+    <!-- سكربت إدارة وعرض جميع الأذكار -->
+    <script>
+        const fullAzkarDatabase = [
+            // أذكار الصباح
+            {
+                category: 'morning',
+                sectionName: 'أذكار الصباح',
+                content: '«أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير...»',
+                description: 'رواه مسلم',
+                count: 1
+            },
+            {
+                category: 'morning',
+                sectionName: 'أذكار الصباح',
+                content: '«اللهم بك أصبحنا، وبك أمسينا، وبك نحيا وبك نموت وإليك النشور»',
+                description: 'رواه الترمذي',
+                count: 1
+            },
+            {
+                category: 'morning',
+                sectionName: 'أذكار الصباح',
+                content: '«اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك، وأنا على عهدك وعدك ما استطعت...» (سيد الاستغفار)',
+                description: 'من قالها موقناً بها فمات من يومه دخل الجنة',
+                count: 1
+            },
+            {
+                category: 'morning',
+                sectionName: 'أذكار الصباح',
+                content: '«اللهم عافني في بدني، اللهم عافني في سمعي، اللهم عافني في بصري، لا إله إلا أنت»',
+                description: 'ثلاث مرات',
+                count: 3
+            },
+            {
+                category: 'morning',
+                sectionName: 'أذكار الصباح',
+                content: '«سُبْحَانَ اللَّهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ، وَمِدَادَ كَلِمَاتِهِ»',
+                description: 'ثلاث مرات',
+                count: 3
+            },
+            {
+                category: 'morning',
+                sectionName: 'أذكار الصباح',
+                content: '«بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ»',
+                description: 'ثلاث مرات لم يضره شيء',
+                count: 3
+            },
+
+            // أذكار المساء
+            {
+                category: 'evening',
+                sectionName: 'أذكار المساء',
+                content: '«أمسنا وأمس الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهي على كل شيء قدير»',
+                description: 'رواه مسلم',
+                count: 1
+            },
+            {
+                category: 'evening',
+                sectionName: 'أذكار المساء',
+                content: '«اللهم بك أمسينا، وبك أصبحنا، وبك نحيا وبك نموت وإليك المصير»',
+                description: 'رواه الترمذي',
+                count: 1
+            },
+            {
+                category: 'evening',
+                sectionName: 'أذكار المساء',
+                content: '«أمسينا على فطرة الإسلام، وعلى كلمة الإخلاص، وعلى دين نبينا محمد صلى الله عليه وسلم...»',
+                description: 'صحيح الجامع',
+                count: 1
+            },
+            {
+                category: 'evening',
+                sectionName: 'أذكار المساء',
+                content: '«اللهم إني أسالك العفو والعافية في الدنيا والآخرة...»',
+                description: 'دعاء حماية شامل',
+                count: 1
+            },
+
+            // أذكار النوم
+            {
+                category: 'sleep',
+                sectionName: 'أذكار النوم الاستعداد والراحة',
+                content: '«بِاسْمِكَ رَبِّ وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا...»',
+                description: 'متفق عليه',
+                count: 1
+            },
+            {
+                category: 'sleep',
+                sectionName: 'أذكار النوم الاستعداد والراحة',
+                content: 'قراءة آية الكرسي: «اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...»',
+                description: 'لم يزل عليك من الله حافظ حتى تصبح',
+                count: 1
+            },
+            {
+                category: 'sleep',
+                sectionName: 'أذكار النوم الاستعداد والراحة',
+                content: 'جمع الكفين النفث فيهما بـ (قل هو الله أحد) و (المعوذتين) ومسح ما استطاع من الجسد.',
+                description: 'ثلاث مرات قبل النوم',
+                count: 3
+            },
+
+            // أذكار الصلاة
+            {
+                category: 'prayer',
+                sectionName: 'أذكار دبر الصلاة المفروضة',
+                content: '«أستغفر الله (3 مرات)، اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام»',
+                description: 'بعد التسليم من الصلاة',
+                count: 1
+            },
+            {
+                category: 'prayer',
+                sectionName: 'أذكار دبر الصلاة المفروضة',
+                content: '«لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهي على كل شيء قدير...»',
+                description: 'تهليلة بعد كل صلاة',
+                count: 1
+            },
+            {
+                category: 'prayer',
+                sectionName: 'أذكار دبر الصلاة المفروضة',
+                content: 'سبحان الله (33)، الحمد لله (33)، الله أكبر (33)، وتمام المائة: «لا إله إلا الله وحده لا شريك له...»',
+                description: 'غفرت خطيئته وإن كانت مثل زبد البحر',
+                count: 1
+            },
+
+            // التسبيح والاستغفار
+            {
+                category: 'praise',
+                sectionName: 'التسبيح والتهليل والاستغفار العام',
+                content: '«أستغفر الله العظيم الذي لا إله إلا هو الحي القيوم وأتوب إليه»',
+                description: 'مائة مرة يومياً لتفريغ الهموم',
+                count: 100
+            },
+            {
+                category: 'praise',
+                sectionName: 'التسبيح والتهليل والاستغفار العام',
+                content: '«سُبْحَانَ اللَّهِ، وَالْحَمْدُ لِلَّهِ، وَلَا إِلَهَ إِلَّا اللَّهُ، وَاللَّهُ أَكْبَرُ» (الباقيات الصالحات)',
+                description: 'أحب الكلام إلى الله',
+                count: 100
+            },
+            {
+                category: 'praise',
+                sectionName: 'التسبيح والتهليل والاستغفار العام',
+                content: '«لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ»',
+                description: 'كنز من كنز الجنة',
+                count: 100
+            },
+            {
+                category: 'praise',
+                sectionName: 'التسبيح والتهليل والاستغفار العام',
+                content: '«اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى نَبِيِّنَا مُحَمَّدٍ»',
+                description: 'من صلى عليه صلاة صلى الله عليه بها عشراً',
+                count: 10
+            }
+        ];
+
+        function renderAzkar(filter = 'all') {
+            const container = document.getElementById('azkar-container');
+            container.innerHTML = '';
+
+            const filtered = filter === 'all' ? fullAzkarDatabase : fullAzkarDatabase.filter(z => z.category === filter);
+
+            let currentSection = '';
+
+            filtered.forEach((zikr) => {
+                // إضافة عناوين الأقسام تلقائياً لو كنا في عرض الكل
+                if (filter === 'all' && zikr.sectionName !== currentSection) {
+                    currentSection = zikr.sectionName;
+                    const secTitle = document.createElement('h2');
+                    secTitle.className = 'section-title';
+                    secTitle.innerHTML = `<i class="fa-solid fa-bookmark"></i> ${currentSection}`;
+                    container.appendChild(secTitle);
+                }
+
+                const card = document.createElement('div');
+                card.style.cssText = 'background: #fcfdfd; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0; box-shadow: 0 2px 4px rgba(0,0,0,0.01);';
+
+                card.innerHTML = `
+                    <p style="font-family: 'Amiri', serif; font-size: 1.35rem; line-height: 2.2; margin-bottom: 12px; color: #2d3748;">${zikr.content}</p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px dashed #edf2f7; padding-top: 12px;">
+                        <span style="font-size: 0.85rem; color: #718096;"><i class="fa-solid fa-circle-info"></i> ${zikr.description}</span>
+                        <button onclick="decrementZikr(this, ${zikr.count})" style="padding: 8px 20px; background: var(--emerald-green); color: white; border: none; border-radius: 20px; font-family: 'Cairo'; font-weight: bold; cursor: pointer; transition: 0.3s;">
+                            المتبقي: <span class="counter">${zikr.count}</span>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterCategory(categoryKey, btnElement) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+            btnElement.classList.add('active');
+            renderAzkar(categoryKey);
+        }
+
+        function decrementZikr(btn, originalMax) {
+            let span = btn.querySelector('.counter');
+            let current = parseInt(span.textContent);
+            if (current > 0) {
+                current--;
+                span.textContent = current;
+                if (current === 0) {
+                    btn.style.background = '#10b981';
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> تمت القراءة بنجاح';
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => renderAzkar('all'));
+    </script>
+   
+      <!-- الفوتر -->
+      <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="prophets.html">قصص الأنبياء</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+            <!-- قسم وسائل التواصل الاجتماعي -->
+            <div class="footer-social">
+                <h4>تواصل معي</h4>
+                <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+        </div>
+    </footer> 
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

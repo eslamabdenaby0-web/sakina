@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أسماء الله الحسنى ومعانيها | منصة سكينة</title>
+    <!-- خطوط عربية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- مكتبة الأيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- ربط ملفات الـ CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/dark-theme.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+                <span class="brand-name">سكينة</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                    <li><a href="tafsir.html" class="active"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                    <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                    <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                    <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                    <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                    <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                    <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                    <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="container">
+        
+        <!-- قسم الهيرو للصفحة -->
+        <section class="card" style="background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green)); color: white; text-align: center; padding: 35px; border-radius: 20px; margin-bottom: 30px;">
+            <h1 style="font-family: 'Amiri', serif; font-size: 2.5rem; color: var(--gold-light); margin-bottom: 10px;">أسماء الله الحسنى ومعانيها</h1>
+            <p style="font-size: 1.1rem; opacity: 0.95;">«وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَى فَادْعُوهُ بِهَا»</p>
+        </section>
+
+        <!-- شبكة عرض أسماء الله الحسنى الـ 99 -->
+        <div id="names-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            <!-- سيتم توليد الأسماء هنا ديناميكياً عبر الجافاسكريبت -->
+        </div>
+
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="main-footer" style="margin-top: 50px;">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="duas.html">الأدعية المستجابة</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026</p>
+        </div>
+    </footer>
+
+    <!-- سكربت لعرض أسماء الله الحسنى الـ 99 مع معانيها -->
+    <script>
+ const allahNames = [
+            { number: 1, name: "الرَّحْمَٰن", meaning: "الواسع الرحمة بجميع خلقه في الدنيا، وبالمؤمنين في الآخرة." },
+            { number: 2, name: "الرَّحِيم", meaning: "المختص بالرحمة للمؤمنين يوم القيامة." },
+            { number: 3, name: "الْمَلِك", meaning: "المتصف بالملك الحقيقي، الحاكم المطلق للكون." },
+            { number: 4, name: "السَّلَام", meaning: "المنزه عن كل نقص، واهب الأمان والسلام لعباده." },
+            { number: 5, name: "الْمُؤْمِن", meaning: "الذي امن خلقه من ظلمه، ومصدق رسله بالمعجزات." },
+            { number: 6, name: "الْمُهَيْمِن", meaning: "الرقيب الحافظ لكل عمل، المسيطر على خلقه." },
+            { number: 7, name: "الْعَزِيز", meaning: "القوي المنيع الذي لا يُغلب، العزيز في سلطانه." },
+            { number: 8, name: "الْجَبَّار", meaning: "الذي يقهر الجبابرة ويصلح أمور خلقه." },
+            { number: 9, name: "الْمُتَكَبِّر", meaning: "المتعالي عن صفات الخلق، ذو الكبرياء والعظمة." },
+            { number: 10, name: "الْخَالِق", meaning: "المقدر للأشياء والموجد لها من العدم." },
+            { number: 11, name: "الْبَارِئ", meaning: "الذي خلق الخلق بريئة من التفاوت والعيوب." },
+            { number: 12, name: "الْمُصَوِّر", meaning: "الذي يعطي كل خلق صورته وشكله بحكمة." },
+            { number: 13, name: "الْغَفَّار", meaning: "الذي يستر الذنوب مراراً وتكراراً لمن تاب واستغفر." },
+            { number: 14, name: "الْقَهَّار", meaning: "الذي قهر كل شيء وذل له جميع المخلوقات." },
+            { number: 15, name: "الْوَهَّاب", meaning: "المنعم بالهبات والعطايا دون مقابل أو غرض." },
+            { number: 16, name: "الرَّزَّاق", meaning: "الذي خلق الأسباب وضمن الأرزاق لجميع خلقه." },
+            { number: 17, name: "الْفَتَّاح", meaning: "الذي يفتح أبواب الرحمة والرزق ويفصل بين الحق والباطل." },
+            { number: 18, name: "الْعَلِيم", meaning: "المحيط علماً بكل شيء ظاهر وباطن، ماضي ومستقبل." },
+            { number: 19, name: "الْقَابِض", meaning: "الذي يقبض الأرزاق والأنفس بحكمته وعدله." },
+            { number: 20, name: "الْبَاسِط", meaning: "الذي يوسع الرزق ويبسط الرحمة على عباده." },
+            { number: 21, name: "الْخَافِض", meaning: "الذي يخفض الكفار والمستكبرين بعدل وسطوة." },
+            { number: 22, name: "الرَّافِع", meaning: "الذي يرفع المؤمنين المتقين درجات في الدنيا والآخرة." },
+            { number: 23, name: "الْمُعِزّ", meaning: "الذي يمنح العزة والمنعة لمن أطاعه." },
+            { number: 24, name: "الْمُذِلّ", meaning: "الذي يذل من عصاه وتمرد على أمره." },
+            { number: 25, name: "السَّمِيع", meaning: "الذي يسمع كل الأصوات باختلاف لغاتها وخفائها." },
+            { number: 26, name: "الْبَصِير", meaning: "الذي يرى دبيب النملة السوداء على الصخرة الصماء في الليلة الظلماء." },
+            { number: 27, name: "الْحَكَم", meaning: "الذي يقضي بين عباده بالعدل المطلق." },
+            { number: 28, name: "الْعَدْل", meaning: "المتصف بالعدل التام الذي لا يظلم أحداً مثقال ذرة." },
+            { number: 29, name: "اللَّطِيف", meaning: "الرفيق بعباده، العليم بدقائق الأمور ومصارفها." },
+            { number: 30, name: "الْخَبِير", meaning: "الذي يععلم بواطن الأمور وخفاياها." },
+            { number: 31, name: "الْحَلِيم", meaning: "الذي لا يعاجل العصاة بالعقوبة بل يمهلهم للتوبة." },
+            { number: 32, name: "الْعَظِيم", meaning: "الذي تعظم وتكبر الجلالة له في كل صفة." },
+            { number: 33, name: "الْغَفُور", meaning: "الكثير المغفرة لذنوب عباده التائبين." },
+            { number: 34, name: "الشَّكُور", meaning: "الذي يجزي القليل من العمل بالثواب الجزيل." },
+            { number: 35, name: "الْعَلِيّ", meaning: "المرتفع في ذاته وقدره عن كل نقص." },
+            { number: 36, name: "الْكَبِير", meaning: "الذي كل شيء دونه في العظمة والجلال." },
+            { number: 37, name: "الْحَفِيظ", meaning: "الذي يحفظ خلقه ويسجل أعمالهم بدقة." },
+            { number: 38, name: "الْمُقِيت", meaning: "الذي كفل أقوات الخلائق وأوصلها إليها." },
+            { number: 39, name: "الْحَسِيب", meaning: "الكافي لخلقه، الحاكم والمحاسب لكل أحد." },
+            { number: 40, name: "الْجَلِيل", meaning: "المتصف بصفات الجلال والعظمة المطلقة." },
+            { number: 41, name: "الْكَرِيم", meaning: "الكثير الخير العطاء، المعطاء بلا منّة." },
+            { number: 42, name: "الرَّقِيب", meaning: "المطلع على ما تحويه الصدور والمراقب لكل حركة." },
+            { number: 43, name: "الْمُجِيب", meaning: "الذي يستجيب دعاء الداعين ويلبي حاجاتهم." },
+            { number: 44, name: "الْوَاسِع", meaning: "الذي وسع كل شيء رحمة وعلماً وفضلاً." },
+            { number: 45, name: "الْحَكِيم", meaning: "الذي يضع الأشياء مواضعها بحكمة بالغة." },
+            { number: 46, name: "الْوَدُود", meaning: "المحب لعباده الصالحين، المحبوب في قلوبهم." },
+            { number: 47, name: "الْمَجِيد", meaning: "البالغ في العظمة والرفعة والشرف." },
+            { number: 48, name: "الْبَاعِث", meaning: "الذي يبعث الموتى من قبورهم للحساب." },
+            { number: 49, name: "الشَّهِيد", meaning: "الحاضر الذي لا يغيب عنه شيء من خلقه." },
+            { number: 50, name: "الْحَقّ", meaning: "الثابت الوجود، الذي لا شك في حقيقته." },
+            { number: 51, name: "الْوَكِيل", meaning: "الكفيل بأمور عباده المعتمد عليه في كل شأن." },
+            { number: 52, name: "الْقَوِيّ", meaning: "ذو القدرة التامة الذي لا يعجزه شيء." },
+            { number: 53, name: "الْمَتِين", meaning: "الشديد القوة الذي لا ينفد كيده أو قدرته." },
+            { number: 54, name: "الْوَلِيّ", meaning: "الناصر والمحب والمعين للمؤمنين." },
+            { number: 55, name: "الْحَمِيد", meaning: "المحمود على كل نعمه وأفعاله وأسمائه." },
+            { number: 56, name: "الْمُحْصِي", meaning: "الذي أحصى كل شيء عدداً وعلماً." },
+            { number: 57, name: "الْمُبْدِئ", meaning: "الذي أنشأ الخلق وبدأهم من غير مثال سابق." },
+            { number: 58, name: "الْمُعِيد", meaning: "الذي يعيد الخلق بعد موتهم للحساب." },
+            { number: 59, name: "الْمُحْيِي", meaning: "الذي يحيي القلوب بالإيمان والأجساد بالحياة." },
+            { number: 60, name: "الْمُمِيت", meaning: "الذي يقدر الموت على كل ذي روح." },
+            { number: 61, name: "الْحَيّ", meaning: "الباقي الدائم بلا زوال أو فناء." },
+            { number: 62, name: "الْقَيُّوم", meaning: "القائم بنفسه، المقيم لكل موجود في الكون." },
+            { number: 63, name: "الْوَاجِد", meaning: "الذي لا يعجزه مطلوب ولا يفوته شيء." },
+            { number: 64, name: "الْمَاجِد", meaning: "المتصف بالكرم والشرف الواسع." },
+            { number: 65, name: "الْوَاحِد", meaning: "الفرد في ذاته وصفاته وفعاله لا شريك له." },
+            { number: 66, name: "الأَحَد", meaning: "المنفرد بالألوهية والعظمة." },
+            { number: 67, name: "الصَّمَد", meaning: "الذي تصمد إليه الخلائق في حاجاتها." },
+            { number: 68, name: "الْقَادِر", meaning: "المتصرف في الوجود بقدرة لا متناهية." },
+            { number: 69, name: "الْمُقْتَدِر", meaning: "المتمكن المطلق الذي لا يمتنع عليه مراد." },
+            { number: 70, name: "الْمُقَدِّم", meaning: "الذي يقدم من يشاء بحكمته من خلقه." },
+            { number: 71, name: "الْمُؤَخِّر", meaning: "الذي يؤخر من يشاء لحكمة بالغة." },
+            { number: 72, name: "الأَوَّل", meaning: "الذي ليس قبله شيء، الأزلي بلا مبدأ." },
+            { number: 73, name: "الآخِر", meaning: "الذي ليس بعده شيء، الأبدي بلا انتهاء." },
+            { number: 74, name: "الظَّاهِر", meaning: "المتبدي بآدابه وآياته وعظمته في الكون." },
+            { number: 75, name: "الْبَاطِن", meaning: "المحتجب عن أبصار الخلق، العالم ببواطن الأمور." },
+            { number: 76, name: "الْوَالِي", meaning: "المالك والمدبر لأمور خلقه." },
+            { number: 77, name: "الْمُتَعَالِي", meaning: "المتنزه عن صفات المخلوقين وعما يقول الظالمون." },
+            { number: 78, name: "الْبَرّ", meaning: "الكثير الإحسان والبر والعطاء لخلقه." },
+            { number: 79, name: "التَّوَّاب", meaning: "الذي يقبل التوبة عن عباده مراراً إذا تابوا." },
+            { number: 80, name: "الْمُنْتَقِم", meaning: "الذي ينتصر لأوليائه ممن ظلمهم بعد إمهال." },
+            { number: 81, name: "الْعَفُوّ", meaning: "الذي يمحو السيئات ويتجاوز عن الخطايا." },
+            { number: 82, name: "الرَّؤُوف", meaning: "الشديد الرأفة والرحمة بعباده." },
+            { number: 83, name: "مَالِكُ الْمُلْك", meaning: "المتصرف في ملكه كيف يشاء بلا منازع." },
+            { number: 84, name: "ذُو الْجَلَالِ وَالإِكْرَام", meaning: "المستحق للعظمة والجلال، وللإكرام والإنعام." },
+            { number: 85, name: "الْمُقْسِط", meaning: "العادل الذي ينتصف للمظلوم من الظالم." },
+            { number: 86, name: "الْجَامِع", meaning: "الذي يجمع الناس ليوم لا ريب فيه." },
+            { number: 87, name: "الْغَنِيّ", meaning: "المستغن عن كل ما سواه، المحتاج إليه كل شيء." },
+            { number: 88, name: "الْمُغْنِي", meaning: "الذي يغني عباده ويكفيهم بحسب حكمته." },
+            { number: 89, name: "الْمَانِع", meaning: "الذي يمنع الضرر والبلاء عن أوليائه." },
+            { number: 90, name: "الضَّارّ", meaning: "المقدر للضرر على من يستحقه بحكمته." },
+            { number: 91, name: "النَّافِع", meaning: "واهب الخير والنفع لمن يشاء من عباده." },
+            { number: 92, name: "النُُّور", meaning: "الذي بنوره تستنير السماوات والارض وقلوب المؤمنين." },
+            { number: 93, name: "الْهَادِي", meaning: "الذي يهدي إلى الحق والصراط المستقيم." },
+            { number: 94, name: "الْبَدِيع", meaning: "مبدع الكون ومنشئه على غير مثال سابق." },
+            { number: 95, name: "الْبَاقِي", meaning: "الدائم الوجود الذي لا يفنى ولا يزول." },
+            { number: 96, name: "الْوَارِث", meaning: "الباقي بعد فناء الخلق، وإليه ترجع الأمور." },
+            { number: 97, name: "الْرَّشِيد", meaning: "المرشد لخلقه إلى طريق الرشاد والحكمة." },
+            { number: 98, name: "الصَّبُور", meaning: "الذي لا يعاجل العصاة بالعقوبة بل يمهلهم بصبر عظيم." },
+            { number: 99, name: "الْجَلِيل", meaning: "المتصف بصفات الجلال والعظمة المطلقة." }
+        ];
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const gridContainer = document.getElementById("names-grid");
+            gridContainer.innerHTML = "";
+
+            allahNames.forEach(item => {
+                const card = document.createElement("div");
+                card.style.cssText = "background: white; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s;";
+                
+                card.innerHTML = `
+                    <div>
+                        <span style="display: inline-block; background: #f0fdf4; color: var(--emerald-green); font-size: 0.75rem; padding: 3px 8px; border-radius: 10px; margin-bottom: 8px; font-weight: bold;">${item.number}</span>
+                        <h3 style="color: var(--emerald-green); font-size: 1.6rem; font-family: 'Amiri', serif; margin-bottom: 8px;">${item.name}</h3>
+                        <p style="font-size: 0.9rem; color: #475569; line-height: 1.6;">${item.meaning}</p>
+                    </div>
+                `;
+
+                // تأثير عند مرور الماوس
+                card.addEventListener("mouseenter", () => {
+                    card.style.transform = "translateY(-5px)";
+                    card.style.boxShadow = "0 10px 15px rgba(0,0,0,0.05)";
+                    card.style.borderColor = "var(--emerald-green)";
+                });
+                card.addEventListener("mouseleave", () => {
+                    card.style.transform = "translateY(0)";
+                    card.style.boxShadow = "0 4px 6px rgba(0,0,0,0.02)";
+                    card.style.borderColor = "#e2e8f0";
+                });
+
+                gridContainer.appendChild(card);
+            });
+        });
+    </script>
+   
+      <!-- الفوتر -->
+      <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="prophets.html">قصص الأنبياء</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+            <!-- قسم وسائل التواصل الاجتماعي -->
+            <div class="footer-social">
+                <h4>تواصل معي</h4>
+                <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+        </div>
+    </footer> 
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

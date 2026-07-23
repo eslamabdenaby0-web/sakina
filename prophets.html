@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قصص الأنبياء | منصة سكينة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        :root {
+            --emerald-green: #047857;
+            --emerald-dark: #065f46;
+            --emerald-light: #ecfdf5;
+            --gold-accent: #d97706;
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .site-header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--emerald-green);
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Amiri', serif;
+        }
+
+        .crescent-icon {
+            background-color: var(--emerald-green);
+            color: #f59e0b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: #475569;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .nav-links li a:hover, .nav-links li a.active {
+            color: var(--emerald-green);
+            background-color: var(--emerald-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        /* شبكة الكروت */
+        .prophets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .prophet-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            padding: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--emerald-green);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .prophet-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .prophet-title {
+            color: var(--emerald-green);
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .prophet-subtitle {
+            font-size: 0.85rem;
+            color: var(--gold-accent);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .prophet-summary {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .read-more-btn {
+            background-color: var(--emerald-light);
+            color: var(--emerald-green);
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.2s;
+            font-family: 'Cairo', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .read-more-btn:hover {
+            background-color: var(--emerald-green);
+            color: white;
+        }
+
+        /* تصميم نافذة القراءة الكاملة (Modal) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 750px;
+            width: 100%;
+            max-height: 85vh;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: modalFadeIn 0.3s ease;
+            overflow: hidden;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green));
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .close-modal {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .modal-body {
+            padding: 30px 25px;
+            overflow-y: auto;
+            font-size: 1.1rem;
+            color: #334155;
+            line-height: 2.2;
+            font-family: 'Amiri', serif;
+            text-align: justify;
+        }
+
+        .loading-state, .error-state {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 50px;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        .error-state { color: #ef4444; }
+    </style>
+        <link rel="stylesheet" href="assets/css/dark-theme.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand-logo">
+                <div class="crescent-icon"><i class="fa-solid fa-moon"></i></div>
+                <span class="brand-name">سكينة</span>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fa-solid fa-house"></i> الرئيسية</a></li>
+                    <li><a href="quran.html"><i class="fa-solid fa-book-quran"></i> القرآن الكريم</a></li>
+                    <li><a href="tafsir.html" class="active"><i class="fa-solid fa-book-bookmark"></i> التفسير</a></li>
+                    <li><a href="prayers.html"><i class="fa-solid fa-clock"></i> مواقيت الصلاة</a></li>
+                    <li><a href="salah-tracker.html"><i class="fa-solid fa-chart-line"></i> حساب الحسنات</a></li>
+                    <li><a href="azkar.html"><i class="fa-solid fa-hands-praying"></i> الأذكار</a></li>
+                    <li><a href="hadith.html"><i class="fa-solid fa-feather"></i> الأحاديث</a></li>
+                    <li><a href="prophets.html"><i class="fa-solid fa-book-open-reader"></i> قصص الأنبياء</a></li>
+                    <li><a href="tasbeeh.html"><i class="fa-solid fa-circle-notch"></i> السبحة</a></li>
+                    <li><a href="qibla.html"><i class="fa-solid fa-compass"></i> القبلة</a></li>
+                    <li><a href="calendar.html"><i class="fa-solid fa-calendar-days"></i> التقويم</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-btn" title="تغيير المظهر"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- هيدر الصفحة -->
+        <section style="background: linear-gradient(135deg, var(--emerald-dark), var(--emerald-green)); color: white; text-align: center; padding: 40px 20px; border-radius: 16px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            <h1 style="font-family: 'Amiri', serif; font-size: 2.6rem; color: #fef08a; margin-bottom: 10px;">عِبَر وقصص الأنبياء</h1>
+            <p style="font-size: 1.1rem; opacity: 0.9;">اقرأ سير الأنبياء والرسل كاملة ومفصلة كما وردت في القرآن الكريم للعظة والتفكر.</p>
+        </section>
+
+        <!-- حاوية عرض الكروت التي سيتم تعبئتها ديناميكياً من ملف prophets.json -->
+        <div id="prophets-container" class="prophets-grid">
+            <div class="loading-state">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <p>جاري تحميل قصص الأنبياء...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- نافذة قراءة القصة الكاملة (Modal) -->
+    <div id="storyModal" class="modal-overlay" onclick="closeStoryModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h2 id="modalTitle">عنوان القصة</h2>
+                <button class="close-modal" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- نص القصة التفصيلي يوضع هنا -->
+            </div>
+        </div>
+    </div>
+
+    <!-- السكربت لجلب بيانات الـ JSON وعرضها -->
+    <script>
+        let allProphets = [];
+
+        async function loadProphets() {
+            const container = document.getElementById('prophets-container');
+            try {
+                const response = await fetch('prophets.json');
+                if (!response.ok) {
+                    throw new Error('فشل جلب ملف بيانات الأنبياء');
+                }
+                allProphets = await response.json();
+                container.innerHTML = '';
+
+                allProphets.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'prophet-card';
+                    card.innerHTML = `
+                        <div>
+                            <h3 class="prophet-title"><i class="fa-solid fa-book-bookmark" style="font-size: 1.2rem; margin-left: 6px;"></i>${p.name}</h3>
+                            <div class="prophet-subtitle">${p.title}</div>
+                            <p class="prophet-summary">${p.summary}</p>
+                        </div>
+                        <button class="read-more-btn" onclick="openStoryModal(${p.id})">
+                            <i class="fa-solid fa-book-open"></i> قراءة القصة كاملة
+                        </button>
+                    `;
+                    container.appendChild(card);
+                });
+
+            } catch (error) {
+                console.error(error);
+                container.innerHTML = `
+                    <div class="error-state">
+                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+                        <p>عذراً، حدث خطأ أثناء تحميل القصص. يجدر التأكد من تشغيل الموقع عبر سيرفر محلي (Live Server) ووجود ملف prophets.json في نفس المجلد.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // فتح النافذة المنبثقة وعرض القصة الكاملة
+        function openStoryModal(id) {
+            const prophet = allProphets.find(p => p.id === id);
+            if (!prophet) return;
+
+            document.getElementById('modalTitle').innerText = prophet.name + ' - ' + prophet.title;
+            document.getElementById('modalBody').innerText = prophet.content;
+            document.getElementById('storyModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+        }
+
+        // إغلاق النافذة المنبثقة
+        function closeModal() {
+            document.getElementById('storyModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeStoryModal(event) {
+            if (event.target.id === 'storyModal') {
+                closeModal();
+            }
+        }
+
+        // إغلاق النافذة بزر الـ Esc من لوحة المفاتيح
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', loadProphets);
+    </script>
+      
+        <!-- الفوتر -->
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <span class="brand-name" style="color: var(--islamic-gold);">سكينة</span>
+                <p>منصة إسلامية تهدف لنشر الراحة والسكينة في قلوب المسلمين عبر التكنولوجيا الحديثة.</p>
+            </div>
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <a href="quran.html">القرآن الكريم</a>
+                <a href="prophets.html">قصص الأنبياء</a>
+                <a href="salah-tracker.html">سجل الطاعات</a>
+                <a href="azkar.html">الأذكار اليومية</a>
+            </div>
+            <!-- قسم وسائل التواصل الاجتماعي -->
+            <div class="footer-social">
+                <h4>تواصل معي</h4>
+                <div class="social-icons" style="display: flex; gap: 15px; font-size: 1.2rem; margin-top: 10px;">
+                    <a href="https://www.facebook.com/share/14fPfQWocDp/" target="_blank" title="Facebook" style="color: inherit;"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://wtsi.me/201092568208" target="_blank" title="WhatsApp" style="color: inherit;"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/eslam-abdelnaby-054266379?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" title="LinkedIn" style="color: inherit;"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" style="text-align: center; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+            <p>جميع الحقوق محفوظة لمنصة **سكينة** الإسلامية &copy; 2026 | تم تطويره بواسطة <span style="color: var(--islamic-gold); font-weight: bold;"> Eng/Eslam Abdelnaby</span></p>
+        </div>
+    </footer>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
