@@ -34,65 +34,40 @@
             top: 0;
             z-index: 1000;
         }
-
         .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        position: relative;
+        flex-wrap: wrap;
+    }
 
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--emerald-green);
-            font-size: 1.5rem;
-            font-weight: 700;
-            font-family: 'Amiri', serif;
-        }
+    /* إخفاء الروابط افتراضياً حتى يتم النقر على زر القائمة */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: var(--glass-bg);
+        backdrop-filter: blur(12px);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        gap: 10px;
+        align-items: flex-start;
+        border-top: 1px solid var(--glass-border);
+    }
 
-        .crescent-icon {
-            background-color: var(--emerald-green);
-            color: #f59e0b;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
+    /* الكلاس الذي يقوم بإظهار القائمة عبر الجافاسكريبت */
+    .nav-links.show {
+        display: flex;
+    }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 10px;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-        }
+    .nav-links a {
+        width: 100%;
+        padding: 8px 12px;
+    }
 
-        .nav-links li a {
-            text-decoration: none;
-            color: #475569;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 8px 16px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .nav-links li a:hover, .nav-links li a.active {
-            color: var(--emerald-green);
-            background-color: var(--emerald-light);
-        }
 
         .container {
             max-width: 1200px;
@@ -319,78 +294,152 @@
     </div>
 
     <!-- السكربت لجلب بيانات الـ JSON وعرضها -->
-    <script>
-        let allProphets = [];
+   <!-- السكريبتات الخاصة بالصفحة -->
+   <script>
+    let allProphets = [];
 
-        async function loadProphets() {
-            const container = document.getElementById('prophets-container');
-            try {
-                const response = await fetch('prophets.json');
-                if (!response.ok) {
-                    throw new Error('فشل جلب ملف بيانات الأنبياء');
-                }
-                allProphets = await response.json();
-                container.innerHTML = '';
+    async function loadProphets() {
+        const container = document.getElementById('prophets-container');
+        try {
+            const response = await fetch('prophets.json');
+            if (!response.ok) {
+                throw new Error('فشل جلب ملف بيانات الأنبياء');
+            }
+            allProphets = await response.json();
+            container.innerHTML = '';
 
-                allProphets.forEach(p => {
-                    const card = document.createElement('div');
-                    card.className = 'prophet-card';
-                    card.innerHTML = `
-                        <div>
-                            <h3 class="prophet-title"><i class="fa-solid fa-book-bookmark" style="font-size: 1.2rem; margin-left: 6px;"></i>${p.name}</h3>
-                            <div class="prophet-subtitle">${p.title}</div>
-                            <p class="prophet-summary">${p.summary}</p>
-                        </div>
-                        <button class="read-more-btn" onclick="openStoryModal(${p.id})">
-                            <i class="fa-solid fa-book-open"></i> قراءة القصة كاملة
-                        </button>
-                    `;
-                    container.appendChild(card);
-                });
-
-            } catch (error) {
-                console.error(error);
-                container.innerHTML = `
-                    <div class="error-state">
-                        <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
-                        <p>عذراً، حدث خطأ أثناء تحميل القصص. يجدر التأكد من تشغيل الموقع عبر سيرفر محلي (Live Server) ووجود ملف prophets.json في نفس المجلد.</p>
+            allProphets.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'prophet-card';
+                card.innerHTML = `
+                    <div>
+                        <h3 class="prophet-title"><i class="fa-solid fa-book-bookmark" style="font-size: 1.2rem; margin-left: 6px;"></i>${p.name}</h3>
+                        <div class="prophet-subtitle">${p.title}</div>
+                        <p class="prophet-summary">${p.summary}</p>
                     </div>
+                    <button class="read-more-btn" onclick="openStoryModal(${p.id})">
+                        <i class="fa-solid fa-book-open"></i> قراءة القصة كاملة
+                    </button>
                 `;
+                container.appendChild(card);
+            });
+
+        } catch (error) {
+            console.error(error);
+            container.innerHTML = `
+                <div class="error-state">
+                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 2.5rem; margin-bottom: 15px;"></i>
+                    <p>عذراً، حدث خطأ أثناء تحميل القصص. يجدر التأكد من تشغيل الموقع عبر سيرفر محلي (Live Server) ووجود ملف prophets.json في نفس المجلد.</p>
+                </div>
+            `;
+        }
+    }
+
+    // فتح النافذة المنبثقة وعرض القصة الكاملة
+    function openStoryModal(id) {
+        const prophet = allProphets.find(p => p.id === id);
+        if (!prophet) return;
+
+        document.getElementById('modalTitle').innerText = prophet.name + ' - ' + prophet.title;
+        document.getElementById('modalBody').innerText = prophet.content;
+        document.getElementById('storyModal').style.display = 'flex';
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    // إغلاق النافذة المنبثقة
+    function closeModal() {
+        document.getElementById('storyModal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function closeStoryModal(event) {
+        if (event.target.id === 'storyModal') {
+            closeModal();
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // تشغيل الوظائف عند تحميل الصفحة بالكامل
+    document.addEventListener('DOMContentLoaded', function() {
+        loadProphets();
+
+        // تفعيل قائمة الموبايل في هذه الصفحة بالذات
+        const menuToggle = document.getElementById("menu-toggle");
+        const navLinksContainer = document.querySelector(".nav-links");
+
+        if (menuToggle && navLinksContainer) {
+            const icon = menuToggle.querySelector("i");
+
+            menuToggle.addEventListener("click", function(e) {
+                e.stopPropagation();
+                navLinksContainer.classList.toggle("show");
+                
+                if (icon) {
+                    if (navLinksContainer.classList.contains("show")) {
+                        icon.classList.remove("fa-bars");
+                        icon.classList.add("fa-xmark");
+                    } else {
+                        icon.classList.remove("fa-xmark");
+                        icon.classList.add("fa-bars");
+                    }
+                }
+            });
+
+            navLinksContainer.querySelectorAll("a").forEach(link => {
+                link.addEventListener("click", () => {
+                    navLinksContainer.classList.remove("show");
+                    if (icon) {
+                        icon.classList.remove("fa-xmark");
+                        icon.classList.add("fa-bars");
+                    }
+                });
+            });
+
+            document.addEventListener("click", function(event) {
+                if (!navLinksContainer.contains(event.target) && !menuToggle.contains(event.target)) {
+                    navLinksContainer.classList.remove("show");
+                    if (icon) {
+                        icon.classList.remove("fa-xmark");
+                        icon.classList.add("fa-bars");
+                    }
+                }
+            });
+        }
+
+        // تفعيل الوضع الليلي في هذه الصفحة
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const bodyElement = document.body;
+        const savedTheme = localStorage.getItem('sakina_theme') || 'light';
+
+        if (savedTheme === 'dark') {
+            bodyElement.classList.add('dark-mode');
+            if (themeToggleBtn) {
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
             }
         }
 
-        // فتح النافذة المنبثقة وعرض القصة الكاملة
-        function openStoryModal(id) {
-            const prophet = allProphets.find(p => p.id === id);
-            if (!prophet) return;
-
-            document.getElementById('modalTitle').innerText = prophet.name + ' - ' + prophet.title;
-            document.getElementById('modalBody').innerText = prophet.content;
-            document.getElementById('storyModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden'; // منع التمرير في الخلفية
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                bodyElement.classList.toggle('dark-mode');
+                const isDarkMode = bodyElement.classList.contains('dark-mode');
+                
+                if (isDarkMode) {
+                    localStorage.setItem('sakina_theme', 'dark');
+                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+                } else {
+                    localStorage.setItem('sakina_theme', 'light');
+                    themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+                }
+            });
         }
-
-        // إغلاق النافذة المنبثقة
-        function closeModal() {
-            document.getElementById('storyModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function closeStoryModal(event) {
-            if (event.target.id === 'storyModal') {
-                closeModal();
-            }
-        }
-
-        // إغلاق النافذة بزر الـ Esc من لوحة المفاتيح
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeModal();
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', loadProphets);
-    </script>
+    });
+</script>
+<script src="assets/js/app.js"></script>
       
         <!-- الفوتر -->
     <footer class="main-footer">

@@ -1,31 +1,104 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // الحصول على اسم الصفحة الحالية من الرابط
-    const currentLocation = window.location.pathname.split("/").pop() || "index.html";
     
-    // استهداف كل روابط الناف بار
+    // 1. تحديد الصفحة النشطة في الناف بار
+    const currentLocation = window.location.pathname.split("/").pop() || "index.html";
     const navLinks = document.querySelectorAll(".nav-links a");
     
     navLinks.forEach(link => {
-        // إزالة الكلاس active من الكل أولاً لضمان عدم وجود تداخل
         link.classList.remove("active");
-        
-        // الحصول على اسم الملف من رابط العنصر
         const linkHref = link.getAttribute("href");
-        
-        // إذا كان الرابط يطابق الصفحة الحالية، أضف كلاس active
         if (linkHref === currentLocation) {
             link.classList.add("active");
         }
     });
+
+
+    // 2. نظام الوضع الليلي (Dark Mode) الموحد والمُصحح
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const bodyElement = document.body;
+    const savedTheme = localStorage.getItem('sakina_theme') || 'light';
+
+    // تطبيق الثيم المحفوظ مسبقاً
+    if (savedTheme === 'dark') {
+        bodyElement.classList.add('dark-mode');
+        if (themeToggleBtn) {
+            themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+        }
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            bodyElement.classList.toggle('dark-mode');
+            const isDarkMode = bodyElement.classList.contains('dark-mode');
+            
+            if (isDarkMode) {
+                localStorage.setItem('sakina_theme', 'dark');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            } else {
+                localStorage.setItem('sakina_theme', 'light');
+                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            }
+        });
+    }
+
+
+    // 3. قائمة الموبايل (Mobile Menu) والتحكم في إغلاقها وفتحها
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinksContainer = document.querySelector(".nav-links");
+
+    if (menuToggle && navLinksContainer) {
+        const icon = menuToggle.querySelector("i");
+
+        // فتح وإغلاق القائمة عند النقر على الزر
+        menuToggle.addEventListener("click", function(e) {
+            e.stopPropagation();
+            navLinksContainer.classList.toggle("show");
+            
+            if (navLinksContainer.classList.contains("show")) {
+                if (icon) {
+                    icon.classList.remove("fa-bars");
+                    icon.classList.add("fa-xmark");
+                }
+            } else {
+                if (icon) {
+                    icon.classList.remove("fa-xmark");
+                    icon.classList.add("fa-bars");
+                }
+            }
+        });
+
+        // إغلاق القائمة تلقائياً عند النقر على أي رابط داخلها
+        navLinksContainer.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                navLinksContainer.classList.remove("show");
+                if (icon) {
+                    icon.classList.remove("fa-xmark");
+                    icon.classList.add("fa-bars");
+                }
+            });
+        });
+
+        // إغلاق القائمة عند النقر في أي مكان خارجها
+        document.addEventListener("click", function(event) {
+            if (!navLinksContainer.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinksContainer.classList.remove("show");
+                if (icon) {
+                    icon.classList.remove("fa-xmark");
+                    icon.classList.add("fa-bars");
+                }
+            }
+        });
+    }
+
+    // تشغيل الآيات اليومية إن وجدت في الصفحة
+    loadNewDailyVerse();
 });
-
-
 
 
 // --- آيات يومية متجددة ---
 const dailyVersesDatabase = [
     {
-        verse: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",
+        verse: "أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ",
         source: "[سورة الرعد: 28]",
         tafsir: "أي: بذكر الله تسكن القلوب وتطمئن، وتزول عنها الوحشة والقلق، وتصل إلى اليقين الحقيقي والأمن الدائم."
     },
@@ -42,94 +115,16 @@ const dailyVersesDatabase = [
 ];
 
 function loadNewDailyVerse() {
+    const mainVerseElem = document.getElementById('main-daily-verse');
+    if (!mainVerseElem) return; // حماية الكود إذا لم يكن العنصر موجوداً في الصفحة الحالية
+    
     const randomIndex = Math.floor(Math.random() * dailyVersesDatabase.length);
     const selected = dailyVersesDatabase[randomIndex];
     
-    document.getElementById('main-daily-verse').textContent = `"${selected.verse}"`;
-    document.getElementById('main-verse-source').textContent = selected.source;
-    document.getElementById('main-verse-tafsir').textContent = selected.tafsir;
+    mainVerseElem.textContent = `"${selected.verse}"`;
+    const sourceElem = document.getElementById('main-verse-source');
+    const tafsirElem = document.getElementById('main-verse-tafsir');
+    
+    if (sourceElem) sourceElem.textContent = selected.source;
+    if (tafsirElem) tafsirElem.textContent = selected.tafsir;
 }
-
-// --- نظام الوضع الليلي (Dark Mode) ---
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const bodyElement = document.body;
-
-    // استرجاع الوضع المفضل للمستخدم
-    if(localStorage.getItem('sakina_theme') === 'dark') {
-        bodyElement.classList.add('dark-mode');
-        if(themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-    }
-
-    if(themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            bodyElement.classList.toggle('dark-mode');
-            if(bodyElement.classList.contains('dark-mode')) {
-                localStorage.setItem('sakina_theme', 'dark');
-                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-            } else {
-                localStorage.setItem('sakina_theme', 'light');
-                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-            }
-        });
-    }
-});
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    // تبديل الوضع الليلي والنهاري
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-theme');
-        if(themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-    }
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            let theme = 'light';
-            if (document.body.classList.contains('dark-theme')) {
-                theme = 'dark';
-                themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
-            } else {
-                themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
-            }
-            localStorage.setItem('theme', theme);
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    const menuToggle = document.getElementById("menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    if (menuToggle && navLinks) {
-        menuToggle.addEventListener("click", function() {
-            navLinks.classList.toggle("show");
-            
-            // تغيير الأيقونة بين الشرطات وعلامة الإغلاق (X)
-            const icon = menuToggle.querySelector("i");
-            if (navLinks.classList.contains("show")) {
-                icon.classList.remove("fa-bars");
-                icon.classList.add("fa-xmark");
-            } else {
-                icon.classList.remove("fa-xmark");
-                icon.classList.add("fa-bars");
-            }
-        });
-
-        // إغلاق القائمة تلقائياً عند النقر على أي رابط من روابط الموقع
-        navLinks.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-                navLinks.classList.remove("show");
-                const icon = menuToggle.querySelector("i");
-                if (icon) {
-                    icon.classList.remove("fa-xmark");
-                    icon.classList.add("fa-bars");
-                }
-            });
-        });
-    }
-});
